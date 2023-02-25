@@ -1,4 +1,4 @@
-import {loadImgByTeamId} from "./apiLists/helpers/images";
+import {loadImgByTeamId} from "./helpers/images";
 
 export const Game = ({match, teams, events}) => {
 
@@ -40,7 +40,7 @@ export const Game = ({match, teams, events}) => {
     }
 
 
-    function loadImg (teamId){
+    function loadImg(teamId) {
         // console.log(loadImgByTeamId(teamId))
 
         return <img src={loadImgByTeamId(teamId)} alt={teamId}/>
@@ -50,7 +50,7 @@ export const Game = ({match, teams, events}) => {
     return (
         <tr>
             <td>
-                {loadImg(filterHomeTeam().team_id)}  {filterHomeTeam().team_name_short} {homeScore()} : {awayScore()} {filterAwayTeam().team_name_short}{loadImg(filterAwayTeam().team_id)}
+                {loadImg(filterHomeTeam().team_id)} {filterHomeTeam().team_name_short} {homeScore()} : {awayScore()} {filterAwayTeam().team_name_short}{loadImg(filterAwayTeam().team_id)}
             </td>
 
         </tr>
