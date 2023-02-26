@@ -2,9 +2,7 @@ import './App.css';
 import {Match} from "./componets/Match";
 import {useEffect, useState} from "react";
 import {getEvents, getMatches, getTeams} from "./fetchApi/apiData";
-import {ColoredCircle} from "./componets/MatchResult";
 import 'bootstrap/dist/css/bootstrap.css';
-
 
 
 function App() {
@@ -22,17 +20,14 @@ function App() {
     // Todo: fetchState on mounted
     useEffect(() => {
             const timerId = setInterval(fetchState, 1000 * 2)
-
             return () => clearInterval(timerId);
 
         }, [fetchState]
     )
 
-   const toggleShowLongName =()=>{
+    const toggleShowLongName = () => {
         setShowLongName(!showLongName)
-   }
-
-
+    }
 
 
     return (
@@ -40,15 +35,17 @@ function App() {
         <div className="App">
             <div id={'container'}>
                 <div>
-                <button onClick={toggleShowLongName}>{showLongName ? 'show short name' : 'show full name' }</button>
+                    <button id={'button'}
+                            onClick={toggleShowLongName}>{showLongName ? 'show short name' : 'show full name'}</button>
                 </div>
-            <table className={'table table-striped'}>
-                <tbody>
+                <table className={'table table-striped'}>
+                    <tbody id={'body'}>
 
-                {matches.map(match => (<Match key={match.match_id} match={match} teams={teams} events={events} showLongName={showLongName}/>))}
+                    {matches.map(match => (<Match key={match.match_id} match={match} teams={teams} events={events}
+                                                  showLongName={showLongName}/>))}
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
             </div>
         </div>
 

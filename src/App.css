@@ -7,43 +7,70 @@
     align-items: center;
 }
 
-#container{
-    width: 800px;
-    /*overflow-x: visible;*/
+#container {
+    min-width: 800px;
+    max-width: 900px;
+    width: auto;
+    height: 800px;
 }
+#body{
+    flex: 0 0 25em;
+
+}
+#row {
+    flex: 0 0 25em;
+}
+
 #started {
-background-color: greenyellow;
+    background-color: greenyellow;
     float: inside;
 
 }
-#notStarted{
+
+#notStarted {
     background-color: red;
     float: inside;
 }
 
-#scoreContainer{
+#scoreContainer {
 
     text-align: center;
     font-size: 1.2em;
 
 }
 
-#textRight{
+#textRight {
     font-size: 1.2em;
-float: right;
+    float: right;
 
 }
-#textLeft{
+
+#textLeft {
     font-size: 1.2em;
-float: left;
+    float: left;
 }
-#imgRight{
+
+#imgRight {
     float: right;
 }
-#imgLeft{
-float: left;
+
+#imgLeft {
+    float: left;
 }
-#butt{
+
+#button {
+    position: fixed;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    top: 5%;
+    right: 50%;
     height: 25px;
     width: 150px;
+}
+
+#button:hover {
+    background-color: blue;
+    transition: 0.7s;
 }

@@ -56,7 +56,7 @@ export const Match = ({match, teams, events,showLongName}) => {
 
     return (
 
-        <tr className={'row'}>
+        <tr className={'row'} id={'row'}>
             <td className={'col-md-2'}>
                 <p  id={'textLeft'}>{showLongName ? filterHomeTeam().team_name : filterHomeTeam().team_name_short}</p>
             </td>
