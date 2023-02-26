@@ -1,8 +1,8 @@
 import './App.css';
-import {Game} from "./Game";
+import {Match} from "./componets/Match";
 import {useEffect, useState} from "react";
 import {getEvents, getMatches, getTeams} from "./fetchApi/apiData";
-import {ColoredCircle} from "./componets/GameResult";
+import {ColoredCircle} from "./componets/MatchResult";
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -11,6 +11,7 @@ function App() {
     const [teams, setTeams] = useState([])
     const [matches, setMatches] = useState([])
     const [events, setEvents] = useState([])
+    const [showLongName, setShowLongName] = useState(false)
 
     const fetchState = () => {
         getTeams().then(teams => setTeams(teams))
@@ -27,15 +28,24 @@ function App() {
         }, [fetchState]
     )
 
+   const toggleShowLongName =()=>{
+        setShowLongName(!showLongName)
+   }
+
+
+
 
     return (
 
         <div className="App">
-            <div className={'container'}>
+            <div id={'container'}>
+                <div>
+                <button onClick={toggleShowLongName}>{showLongName ? 'show short name' : 'show full name' }</button>
+                </div>
             <table className={'table table-striped'}>
                 <tbody>
 
-                {matches.map(match => (<Game key={match.match_id} match={match} teams={teams} events={events}/>))}
+                {matches.map(match => (<Match key={match.match_id} match={match} teams={teams} events={events} showLongName={showLongName}/>))}
 
                 </tbody>
             </table>

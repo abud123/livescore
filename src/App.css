@@ -7,14 +7,18 @@
     align-items: center;
 }
 
-
-
+#container{
+    width: 800px;
+    /*overflow-x: visible;*/
+}
 #started {
 background-color: greenyellow;
-    position: center;
+    float: inside;
+
 }
 #notStarted{
     background-color: red;
+    float: inside;
 }
 
 #scoreContainer{
@@ -24,8 +28,22 @@ background-color: greenyellow;
 
 }
 
-#text{
+#textRight{
     font-size: 1.2em;
+float: right;
 
-
+}
+#textLeft{
+    font-size: 1.2em;
+float: left;
+}
+#imgRight{
+    float: right;
+}
+#imgLeft{
+float: left;
+}
+#butt{
+    height: 25px;
+    width: 150px;
 }

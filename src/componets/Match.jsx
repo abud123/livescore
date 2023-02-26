@@ -1,9 +1,11 @@
-import {loadImgByTeamId} from "./helpers/images";
-import {GameResult} from "./componets/GameResult";
+import {loadImgByTeamId} from "../helpers/images";
+import {MatchResult} from "./MatchResult";
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-export const Game = ({match, teams, events}) => {
+export const Match = ({match, teams, events,showLongName}) => {
+
+
 
     const filterHomeTeam = () => Object
         .values(teams)
@@ -56,24 +58,24 @@ export const Game = ({match, teams, events}) => {
 
         <tr className={'row'}>
             <td className={'col-md-2'}>
-                <p className={'text-left'} id={'text'}>{filterHomeTeam().team_name_short}</p>
+                <p  id={'textLeft'}>{showLongName ? filterHomeTeam().team_name : filterHomeTeam().team_name_short}</p>
             </td>
 
             <td className={'col-md-2'}>
-                <p className={'rounded float-left'}> {loadImg(filterHomeTeam().team_id)}</p>
+                <p id={'imgleft'}> {loadImg(filterHomeTeam().team_id)}</p>
             </td>
 
             <td className={'col-md-2'}>
-                <p id={'scoreContainer'}><GameResult homeScore={homeScore()} awayScore={awayScore()}
-                                                     matchStared={matchStarted()}/></p>
+                <div id={'scoreContainer'}><MatchResult homeScore={homeScore()} awayScore={awayScore()}
+                                                      matchStared={matchStarted()}/></div>
             </td>
 
             <td className={'col-md-2'}>
-                <p className={'rounded float-right'}>{loadImg(filterAwayTeam().team_id)}</p>
+                <p id={'imgRight'}>{loadImg(filterAwayTeam().team_id)}</p>
             </td>
 
-            <td className={'col-md-2'} >
-                <p className={'text-right'} id={'text'}>{filterAwayTeam().team_name_short}</p>
+            <td className={'col-md-2'}>
+                <p  id={'textRight'}>{showLongName ? filterAwayTeam().team_name : filterAwayTeam().team_name_short}</p>
             </td>
         </tr>
     )
