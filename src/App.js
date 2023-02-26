@@ -3,6 +3,8 @@ import {Game} from "./Game";
 import {useEffect, useState} from "react";
 import {getEvents, getMatches, getTeams} from "./fetchApi/apiData";
 import {ColoredCircle} from "./componets/GameResult";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 
 function App() {
@@ -29,13 +31,15 @@ function App() {
     return (
 
         <div className="App">
-            <table>
+            <div className={'container'}>
+            <table className={'table table-striped'}>
                 <tbody>
 
                 {matches.map(match => (<Game key={match.match_id} match={match} teams={teams} events={events}/>))}
 
                 </tbody>
             </table>
+            </div>
         </div>
 
     );

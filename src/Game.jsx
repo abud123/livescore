@@ -1,5 +1,7 @@
 import {loadImgByTeamId} from "./helpers/images";
 import {GameResult} from "./componets/GameResult";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export const Game = ({match, teams, events}) => {
 
@@ -42,14 +44,6 @@ export const Game = ({match, teams, events}) => {
         return filterEvents().map(event => event.event_type).includes("match_start")
     }
 
-    // const setLightColor = () => {
-    //
-    //     if (matchStarted())
-    //         console.log(matchStarted())
-    //     return <ColoredCircle color={"#00ff00"}/>
-    //     return <ColoredCircle color={"#ff0000"}/>
-    // }
-
 
     function loadImg(teamId) {
         // console.log(loadImgByTeamId(teamId))
@@ -59,16 +53,27 @@ export const Game = ({match, teams, events}) => {
 
 
     return (
-        <tr>
-            <td>
-                {loadImg(filterHomeTeam().team_id)} {filterHomeTeam().team_name_short}
-            </td>
-            <td>
-                <GameResult homeScore={homeScore()} awayScore={awayScore()} matchStared={matchStarted()}/>
-            </td>
-            <td>
-                {filterAwayTeam().team_name_short}{loadImg(filterAwayTeam().team_id)}
 
+        <tr className={'row'}>
+            <td className={'col-md-2'}>
+                <p className={'text-left'} id={'text'}>{filterHomeTeam().team_name_short}</p>
+            </td>
+
+            <td className={'col-md-2'}>
+                <p className={'rounded float-left'}> {loadImg(filterHomeTeam().team_id)}</p>
+            </td>
+
+            <td className={'col-md-2'}>
+                <p id={'scoreContainer'}><GameResult homeScore={homeScore()} awayScore={awayScore()}
+                                                     matchStared={matchStarted()}/></p>
+            </td>
+
+            <td className={'col-md-2'}>
+                <p className={'rounded float-right'}>{loadImg(filterAwayTeam().team_id)}</p>
+            </td>
+
+            <td className={'col-md-2'} >
+                <p className={'text-right'} id={'text'}>{filterAwayTeam().team_name_short}</p>
             </td>
         </tr>
     )
