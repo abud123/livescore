@@ -1,5 +1,5 @@
 import {} from'../App.css'
-export const MatchResult = ({homeScore, awayScore, matchStared}) => {
+export const MatchResult = ({homeScore = 0, awayScore = 0, matchStared = false}) => {
     if (matchStared)
         return (
             <div id={'scoreContainer'} data-testid={'background-color-green'}>
