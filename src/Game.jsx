@@ -1,4 +1,5 @@
 import {loadImgByTeamId} from "./helpers/images";
+import {GameResult} from "./componets/GameResult";
 
 export const Game = ({match, teams, events}) => {
 
@@ -16,10 +17,8 @@ export const Game = ({match, teams, events}) => {
 
 
     const filterGoals = () => {
-        // console.log(filterEvents())
         if (filterEvents())
             return filterEvents().filter(event => {
-                // console.log(event.event_type==='goal')
                 return event.event_type === 'goal'
             })
         return []
@@ -39,6 +38,18 @@ export const Game = ({match, teams, events}) => {
         }).map((event) => event.score_amount).reduce((e1, e2) => e1 + e2, 0)
     }
 
+    const matchStarted = () => {
+        return filterEvents().map(event => event.event_type).includes("match_start")
+    }
+
+    // const setLightColor = () => {
+    //
+    //     if (matchStarted())
+    //         console.log(matchStarted())
+    //     return <ColoredCircle color={"#00ff00"}/>
+    //     return <ColoredCircle color={"#ff0000"}/>
+    // }
+
 
     function loadImg(teamId) {
         // console.log(loadImgByTeamId(teamId))
@@ -50,9 +61,15 @@ export const Game = ({match, teams, events}) => {
     return (
         <tr>
             <td>
-                {loadImg(filterHomeTeam().team_id)} {filterHomeTeam().team_name_short} {homeScore()} : {awayScore()} {filterAwayTeam().team_name_short}{loadImg(filterAwayTeam().team_id)}
+                {loadImg(filterHomeTeam().team_id)} {filterHomeTeam().team_name_short}
             </td>
+            <td>
+                <GameResult homeScore={homeScore()} awayScore={awayScore()} matchStared={matchStarted()}/>
+            </td>
+            <td>
+                {filterAwayTeam().team_name_short}{loadImg(filterAwayTeam().team_id)}
 
+            </td>
         </tr>
     )
 
