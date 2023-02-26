@@ -48,8 +48,6 @@ export const Match = ({match, teams, events,showLongName}) => {
 
 
     function loadImg(teamId) {
-        // console.log(loadImgByTeamId(teamId))
-
         return <img src={loadImgByTeamId(teamId)} alt={teamId}/>
     }
 

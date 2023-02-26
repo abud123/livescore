@@ -1,6 +1,6 @@
 import {} from'../App.css'
 export const MatchResult = ({homeScore, awayScore, matchStared}) => {
-    if (matchStared === true)
+    if (matchStared)
         return (
             <div id={'scoreContainer'} data-testid={'background-color-green'}>
                 <div id={'started'}>
@@ -17,7 +17,7 @@ export const MatchResult = ({homeScore, awayScore, matchStared}) => {
             <div id={'scoreContainer'} data-testid={'background-color-red'}>
 
                 <div id={'notStarted'}>
-
+                    not started
                 </div>
             </div>
         )
